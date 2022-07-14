@@ -38,7 +38,7 @@ const Home: NextPage = () => {
             <p className='text-xs w-64 leading-tight mt-1'>By signing up, you agree to the Terms of Service and Privacy Policy, including Cookie Use.</p>
 
 
-            <h4 className='text-lg font-bold mt-12'>Zaten bir hesabın var mı?</h4>
+            <h4 className='text-lg font-bold mt-12 ml-0'>Zaten bir hesabın var mı?</h4>
 
 
             <button className='flex w-[295px] items-center justify-center bg-white p-2  text-[#2b9be6] font-bold border-2 rounded-[24px]  mt-3 hover:bg-slate-100 transition-all duration-100'>
