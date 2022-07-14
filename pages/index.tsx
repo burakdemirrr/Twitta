@@ -1,7 +1,37 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
+import React from 'react';
+import Modal from 'react-modal';
+
+const customStyles:any = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    borderRadius:"25px",
+  },
+};
+
 const Home: NextPage = () => {
+  let subtitle:any;
+  const [modalIsOpen, setIsOpen] = React.useState<boolean>(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function afterOpenModal() {
+    // references are now sync'd and can be accessed.
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+
   return (
     <div >
       <Head>
@@ -41,10 +71,39 @@ const Home: NextPage = () => {
             <h4 className='text-lg font-bold mt-12 ml-0'>Zaten bir hesabın var mı?</h4>
 
 
-            <button className='flex w-[295px] items-center justify-center bg-white p-2  text-[#2b9be6] font-bold border-2 rounded-[24px]  mt-3 hover:bg-slate-100 transition-all duration-100'>
+            <button className='flex w-[295px] items-center justify-center bg-white p-2  text-[#2b9be6] font-bold border-2 rounded-[24px]  mt-3 hover:bg-slate-100 transition-all duration-100'
+            onClick={openModal}>
             Giriş Yap
             </button>
         </div>
+        <Modal
+        isOpen={modalIsOpen}
+        onAfterOpen={afterOpenModal}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <div className='flex flex-col  h-[600px] rounded-xl w-[550px] px-12'>
+          <img className='w-8 mb-6' src="https://www.iics.k12.tr/wp-content/uploads/2019/07/twitter-logo-png-twitter-logo.png" alt="Twitter logo" />
+          <h3 className='text-3xl mb-7 font-bold'>Twitter'a giriş yap</h3>
+
+          <input type="text" className='h-14 border-2 border-gray-300 px-2 mt-2 rounded-md
+           focus:outline-none focus:border-sky-500 focus:ring-5 focus:ring-sky-500 placeholder:text-slate-700
+          ' placeholder='Kullanıcı Adı'  />
+
+          <input type="password" className='h-14 border-2 border-gray-300  px-2 rounded-md mt-5  
+           focus:outline-none focus:border-1 focus:border-sky-500 focus:ring-5 focus:ring-sky-500 placeholder:text-slate-700
+          ' placeholder='Şifre' />
+          <p className='mt-1  text-blue-700 text-[.8rem] cursor-pointer  hover:underline underline-offset-1 ml-2'>Şifreni mi Unuttun?</p>
+
+          <button className='bg-gray-400 text-white font-bold
+          h-14 rounded-3xl mt-48
+          '>Giriş Yap</button>       
+
+          <p className='mt-6 text-gray-500'>Henüz bir hesabın yok mu? <span className='text-blue-600 cursor-pointer'>Kaydol</span></p>   
+        </div>
+      </Modal>
+
 
 
       </main>
